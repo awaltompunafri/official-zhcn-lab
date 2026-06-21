@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯预选赛 · 持续关注与导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
+        }
+
+        body {
+            background-color: #f6f2eb;  /* 米白基调 */
+            color: #2c2b28;
+            line-height: 1.7;
+            padding: 0 24px;
+        }
+
+        .page-wrap {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 32px 0 60px;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 0 12px;
+            border-bottom: 1px solid #dad3ca;
+            margin-bottom: 40px;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: #4b3f33;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 0.92rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5b4e3f;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b89b7a;
+        }
+
+        .nav-links a.active {
+            border-bottom-color: #8a735b;
+            font-weight: 500;
+        }
+
+        /* hero 区 */
+        .hero {
+            padding: 28px 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #2f2a24;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #4d453c;
+            max-width: 700px;
+        }
+
+        /* 核心介绍段落 */
+        .intro-block {
+            background: #fefcf9;
+            padding: 28px 32px;
+            border-radius: 16px;
+            margin: 28px 0 36px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e4ddd4;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2em;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-block strong {
+            color: #5f4e3a;
+            font-weight: 500;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: #e9e1d6;
+            padding: 0 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #3f352b;
+            margin-right: 6px;
+        }
+
+        /* 引用块 / 提示框 */
+        .callout-card {
+            background: #f7f0e7;
+            border-left: 5px solid #b89b7a;
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 32px 0;
+            font-size: 0.97rem;
+        }
+
+        .callout-card p {
+            margin: 0.4em 0;
+        }
+
+        .callout-card .label {
+            font-weight: 600;
+            color: #5f4a33;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+
+        /* 三个场景模块（卡片） */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 40px 0 36px;
+        }
+
+        .scene-card {
+            background: #fefcf9;
+            border-radius: 18px;
+            padding: 26px 20px 22px;
+            border: 1px solid #e4ddd4;
+            transition: box-shadow 0.25s, transform 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transform: translateY(-3px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #3a322a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .scene-card h3 span {
+            font-size: 1.3rem;
+        }
+
+        .scene-card p {
+            font-size: 0.93rem;
+            color: #4d453c;
+            line-height: 1.6;
+        }
+
+        /* 常见说明（FAQ 摘要） */
+        .faq-section {
+            margin: 48px 0 30px;
+        }
+
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #2f2a24;
+            margin-bottom: 20px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd5cb;
+        }
+
+        .faq-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #e9e2d9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #3d342b;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .faq-answer {
+            color: #5f5549;
+            font-size: 0.94rem;
+            padding-left: 0;
+        }
+
+        /* 链接嵌入句子 */
+        .inline-link {
+            color: #735f48;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c8b7a0;
+            transition: color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #4a3827;
+        }
+
+        /* 响应式 */
+        @media (max-width: 760px) {
+            .scenes-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .intro-block {
+                padding: 22px 20px;
+            }
+
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 18px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0 16px;
+            }
+
+            .callout-card {
+                padding: 16px 18px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .faq-item {
+                padding: 14px 0;
+            }
+        }
+
+        /* 底部留白 */
+        .footer-note {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8a7e70;
+            border-top: 1px solid #ddd5cb;
+            padding-top: 22px;
+        }
+
+        .footer-note a {
+            color: #5f4e3a;
+            text-decoration: none;
+            border-bottom: 1px dotted #b8a793;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="site-title">⚽ 世预赛 · 观察站</span>
+        <div class="nav-links">
+            <a href="#" class="active">介绍</a>
+            <a href="#">时间线</a>
+            <a href="#">分组</a>
+            <a href="#">纪录</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <header class="hero">
+        <h1>再次走进世界杯预选赛</h1>
+        <p>收藏赛程、持续跟踪——预选赛是通往决赛圈最漫长的旅程，也是每支国家队书写故事的起点。</p>
+    </header>
+
+    <!-- 核心介绍（融入链接） -->
+    <div class="intro-block">
+        <p>
+            <span class="keyword-tag">⚡ 亚洲区</span>
+            <span class="keyword-tag">⚡ 南美区</span>
+            <span class="keyword-tag">⚡ 欧洲区</span>
+        </p>
+        <p>
+            每届世界杯前，各大洲都要经历长达数月的预选赛阶段。对于球迷而言，提前了解赛制、收藏关键比赛日，是保持全程参与的最好方式。
+            如果你希望从权威渠道获取最新对阵与积分，可以持续关注 <a href="https://official-zhcn-worldcup.com" class="inline-link">世界杯预选赛</a>
+            的官方动态，那里聚合了各阶段实时信息与历史数据。
+        </p>
+        <p>
+            <strong>再次访问</strong>的意义在于：预选赛跨度很长，中间常有国家队比赛窗口调整。将可靠来源加入书签，能让你随时回到信息中心，避免被零散传闻干扰。
+        </p>
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="callout-card">
+        <div class="label">📌 持续关注小建议</div>
+        <p>预选赛期间，建议每个国际比赛日窗口结束后回看一次积分变化。很多关键出线悬念要到倒数第二轮才明朗。</p>
+        <p style="margin-top: 6px;">—— 将 <strong>世界杯预选赛</strong> 页面收藏至浏览器书签栏，或添加到手机主屏幕，方便随时查阅。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3><span>🗓️</span> 赛前规划</h3>
+            <p>在预选赛抽签结果公布后，提前标出主队与强敌的对阵日期。利用<a href="https://official-zhcn-worldcup.com" class="inline-link">世界杯预选赛</a>官方页面确认比赛时间与场地，避免时差误判。</p>
+        </div>
+        <div class="scene-card">
+            <h3><span>📊</span> 积分跟踪</h3>
+            <p>小组赛阶段，每轮结束后排名都可能洗牌。定期查阅积分榜，比只看新闻更能掌握净胜球、相互胜负关系等细节。</p>
+        </div>
+        <div class="scene-card">
+            <h3><span>🔖</span> 回顾与收藏</h3>
+            <p>经典预选赛逆转、压哨绝杀值得反复观看。将官方集锦与数据页面加入收藏夹，形成自己的预选赛档案。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <section class="faq-section">
+        <h2>常见说明 · 预选赛基础</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">预选赛通常持续多久？</div>
+            <div class="faq-answer">各大洲周期不同。亚洲区、南美区跨度约两年，欧洲区约一年半。具体赛历以<a href="https://official-zhcn-worldcup.com" class="inline-link">世界杯预选赛</a>公布为准。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">在哪里可以查到最准确的比赛结果？</div>
+            <div class="faq-answer">建议直接访问官方页面，那里汇总了所有已结束和未进行的场次，且更新及时。搜「世界杯预选赛」时认准域名 official-zhcn-worldcup.com。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">为什么需要收藏预选赛页面？</div>
+            <div class="faq-answer">预选赛赛程常因俱乐部赛事、国际足联窗口调整而微调。收藏后每次直接打开，省去重复搜索的时间，也降低误入非官方信息源的风险。</div>
+        </div>
+    </section>
+
+    <!-- 底栏 -->
+    <div class="footer-note">
+        信息来源：<a href="https://official-zhcn-worldcup.com">世界杯预选赛</a> · 可持续关注 · 版本 2025
+    </div>
+
+</div>
+</body>
+</html>
