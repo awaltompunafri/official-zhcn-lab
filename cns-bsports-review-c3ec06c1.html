@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b体育 · 稳定通道与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2028;
+            line-height: 1.6;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 0 1.2rem;
+            border-bottom: 1px solid #e8ecf0;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: -0.2px;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1e2028;
+        }
+
+        /* hero 区域 —— 窄幅、轻叙述 */
+        .hero {
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .hero h1 {
+            font-weight: 500;
+            font-size: 2rem;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
+            color: #191c23;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #4d5768;
+            max-width: 600px;
+            margin-top: 0.3rem;
+        }
+
+        .hero .meta {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #687384;
+            border-left: 3px solid #d0d8e0;
+            padding-left: 1rem;
+        }
+
+        .hero .meta a {
+            color: #2d3748;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #cbd5e1;
+        }
+
+        .hero .meta a:hover {
+            text-decoration-color: #1e2028;
+        }
+
+        /* 核心介绍段落 */
+        .intro {
+            margin: 2rem 0 2.8rem;
+            padding: 1.6rem 0;
+            border-top: 1px solid #edf0f4;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+            color: #2c3440;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro .highlight {
+            background: #f2f5f9;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 450;
+        }
+
+        /* 三个场景模块 — 卡片简洁 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.6rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.04);
+            border: 1px solid #eef2f6;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .scene-card:hover {
+            border-color: #d4dde8;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+        }
+
+        .scene-card h3 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.45rem;
+            color: #1f2937;
+            letter-spacing: -0.2px;
+        }
+
+        .scene-card .badge {
+            display: inline-block;
+            background: #edf2f9;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            color: #3b4a5e;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .scene-card p {
+            font-size: 0.92rem;
+            color: #4b5563;
+            line-height: 1.55;
+        }
+
+        /* 常见说明 (accordion 风格摘要) */
+        .faq-section {
+            margin: 2.8rem 0 2rem;
+        }
+
+        .faq-section h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #1c212b;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5eaef;
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+
+        .faq-answer {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-top: 0.15rem;
+            padding-left: 0.2rem;
+        }
+
+        .faq-answer a {
+            color: #2d3748;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #cbd5e1;
+        }
+
+        .faq-answer a:hover {
+            text-decoration-color: #1e2028;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e8ecf1;
+            font-size: 0.85rem;
+            color: #6b7a8c;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .footer-note a {
+            color: #3b4a5e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #d4dde8;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding-bottom: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero .sub {
+                font-size: 0.95rem;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .faq-section h2 {
+                font-size: 1.15rem;
+            }
+
+            .footer-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 860px) {
+            .scene-grid {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航 -->
+        <nav>
+            <div class="logo">
+                <a href="https://cns-bsports.com">b体育</a>
+            </div>
+            <div class="nav-links">
+                <a href="#intro">介绍</a>
+                <a href="#scenes">场景</a>
+                <a href="#faq">说明</a>
+            </div>
+        </nav>
+
+        <!-- hero -->
+        <div class="hero">
+            <h1>页面与入口 · 一点叙述</h1>
+            <div class="sub">
+                保持稳定的访问路径，比快速迭代更值得在意。
+            </div>
+            <div class="meta">
+                这个页面只做一件事：告诉你如何找到<a href="https://cns-bsports.com">b体育</a>，以及它大致是什么样子。
+            </div>
+        </div>
+
+        <!-- 核心介绍 -->
+        <div class="intro" id="intro">
+            <p>
+                很多服务为了活跃度不断改变界面布局，但有时候用户只需要一个不变的地址。<span class="highlight">b体育</span> 的定位偏向后者：它不追逐浮夸的视觉，而是把精力放在信息组织和访问的连贯性上。你看到的页面结构、链接位置、内容层级，都经过简化，目的是减少寻找成本。
+            </p>
+            <p>
+                从实际使用角度看，一个入口如果每隔几周就变更路径，用户就会产生疲劳。<a href="https://cns-bsports.com">b体育</a> 在这一点上保持克制——导航始终清晰，主要功能入口固定，内容更新以补充为主，不轻易推翻既有框架。这种稳定感在信息过载的时期反而成了一种稀缺属性。
+            </p>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <div class="scene-grid" id="scenes">
+            <div class="scene-card">
+                <div class="badge">场景 01</div>
+                <h3>日常浏览</h3>
+                <p>
+                    打开首页，浏览分类或最新内容，没有弹窗干扰，也没有突然变化的按钮位置。适合习惯固定流程的人。
+                </p>
+            </div>
+            <div class="scene-card">
+                <div class="badge">场景 02</div>
+                <h3>信息查证</h3>
+                <p>
+                    当需要确认某个功能或说明时，可以直接通过导航进入对应板块。页面内的文字说明相对细致，不依赖图标暗示。
+                </p>
+            </div>
+            <div class="scene-card">
+                <div class="badge">场景 03</div>
+                <h3>长期使用</h3>
+                <p>
+                    因为链接结构长期不变，可以放心加入书签。每次回来时界面熟悉，无需重新适应布局或菜单位置。
+                </p>
+            </div>
+        </div>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <div class="faq-section" id="faq">
+            <h2>一些常见说明</h2>
+            <div class="faq-item">
+                <div class="faq-question">如何确认当前使用的是最新页面？</div>
+                <div class="faq-answer">
+                    直接访问 <a href="https://cns-bsports.com">b体育</a> 即可，网站会保持版本更新，但不会改变主域名或核心路径。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">页面内容多久调整一次？</div>
+                <div class="faq-answer">
+                    内容按需补充，通常以周或月为单位。首页结构基本不变，只更新内部模块的文字或链接。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">是否支持移动端直接浏览？</div>
+                <div class="faq-answer">
+                    支持。页面采用窄正文与响应式设计，手机端同样可以清晰阅读导航和卡片内容。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">链接失效或页面无法打开怎么办？</div>
+                <div class="faq-answer">
+                    首先检查网络，其次确认使用的域名是否为 <a href="https://cns-bsports.com">b体育</a> 。如果持续异常，可能是临时维护，稍后再试。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            <span>© 2025 · 页面说明</span>
+            <span>稳定入口 · <a href="https://cns-bsports.com">b体育</a></span>
+        </div>
+    </div>
+</body>
+</html>
